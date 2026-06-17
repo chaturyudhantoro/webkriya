@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('school_settings', function (Blueprint $table) {
             $table->id();
             $table->string('website_name')->default('WEBKRIYA');
+            $table->string('academic_year')->default('2026');
             $table->string('opening_hours')->default('Senin - Jumat, 07:00 - 15:00');
             $table->text('address')->default('Jl. Kriya Modern No. 26 Surakarta, Indonesia');
             $table->text('google_maps_url')->nullable();

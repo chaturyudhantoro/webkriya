@@ -415,9 +415,16 @@
             <div class="absolute -inset-1.5 bg-gradient-to-r from-amber-500 to-amber-700 rounded-[2.5rem] blur opacity-10 group-hover:opacity-25 transition duration-1000"></div>
             
             <div class="relative h-full min-h-[400px] overflow-hidden rounded-[2rem] border border-amber-900/10 bg-white p-2 shadow-xl flex">
-                @if(school_setting('google_maps_url'))
+                @php
+                    $mapsUrl = school_setting('google_maps_url');
+                    if ($mapsUrl && str_starts_with(trim($mapsUrl), '<iframe')) {
+                        preg_match('/src="([^"]+)"/', $mapsUrl, $matches);
+                        $mapsUrl = $matches[1] ?? null;
+                    }
+                @endphp
+                @if($mapsUrl)
                     <iframe 
-                        src="{{ school_setting('google_maps_url') }}" 
+                        src="{{ $mapsUrl }}" 
                         class="w-full h-full min-h-[400px] rounded-[1.75rem] border-0" 
                         allowfullscreen="" 
                         loading="lazy" 

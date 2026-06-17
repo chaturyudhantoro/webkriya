@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Urbanist:wght@600;700;800;900&display=swap');
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Urbanist', sans-serif;
+    
+    --color-cyber-bg: #fbfaf7;
+    --color-cyber-card: rgba(255, 255, 255, 0.85);
+    --color-cyber-border: rgba(61, 43, 31, 0.08);
+    --color-cyber-border-hover: rgba(197, 160, 89, 0.3);
+    
+    /* Major Themes */
+    --color-kayu-start: #d4af37;
+    --color-kayu-end: #8b5a2b;
+    --color-kayu-glow: rgba(139, 90, 43, 0.15);
+
+    --color-tekstil-start: #b854d4;
+    --color-tekstil-end: #7f00ff;
+    --color-tekstil-glow: rgba(127, 0, 255, 0.12);
+
+    --color-multimedia-start: #00b0ff;
+    --color-multimedia-end: #f35588;
+    --color-multimedia-glow: rgba(243, 85, 136, 0.12);
+
+    --color-tjkt-start: #00c853;
+    --color-tjkt-end: #0052d4;
+    --color-tjkt-glow: rgba(0, 82, 212, 0.12);
+}
+
+/* Base styling overrides */
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--color-cyber-bg);
+    color: #3d2b1f;
+    letter-spacing: -0.01em;
+}
+
+/* Glassmorphism Card Utility */
+@utility glass-card {
+    background: var(--color-cyber-card);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--color-cyber-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(61, 43, 31, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@utility glass-card-hover {
+    border-color: var(--color-cyber-border-hover);
+    box-shadow: 0 12px 40px 0 rgba(197, 160, 89, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Glass Floating Navbar Utility */
+@utility glass-nav {
+    background: rgba(251, 250, 247, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-cyber-border);
+}
+
+/* Text Glow Effects */
+@utility text-glow-kayu {
+    text-shadow: 0 0 12px var(--color-kayu-glow);
+}
+@utility text-glow-tekstil {
+    text-shadow: 0 0 12px var(--color-tekstil-glow);
+}
+@utility text-glow-multimedia {
+    text-shadow: 0 0 12px var(--color-multimedia-glow);
+}
+@utility text-glow-tjkt {
+    text-shadow: 0 0 12px var(--color-tjkt-glow);
+}
+
+/* Modern Cyber Badges */
+@utility cyber-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(61, 43, 31, 0.08);
+}
+
+@utility cyber-badge-active {
+    background: rgba(197, 160, 89, 0.1);
+    color: #b58d46;
+    border-color: rgba(197, 160, 89, 0.2);
+    text-shadow: 0 0 8px rgba(197, 160, 89, 0.2);
+}
+
+/* Page transitions */
+.page-enter {
+    animation: fadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Light Theme Overrides & Legibility Enhancements */
+.glass-card {
+    color: #3d2b1f;
+}
+.glass-card p, 
+.glass-card .text-slate-300, 
+.glass-card .text-slate-400 {
+    color: #5c4738 !important;
+}
+.glass-card h1, 
+.glass-card h2, 
+.glass-card h3 {
+    color: #2b1d14 !important;
+}
+
+section h2 {
+    color: #2b1d14 !important;
+}
+section p.text-slate-400, 
+section div.text-slate-400 {
+    color: #5c4738 !important;
+}
+
+span.bg-white\/5 {
+    background-color: rgba(61, 43, 31, 0.04) !important;
+    border-color: rgba(61, 43, 31, 0.08) !important;
+    color: #5c4738 !important;
+}
+
+header.glass-nav {
+    background: rgba(251, 250, 247, 0.85) !important;
+    border-bottom: 1px solid rgba(61, 43, 31, 0.06) !important;
+}
+header nav a, 
+header nav button {
+    color: #4a3525 !important;
+}
+header nav a:hover, 
+header nav button:hover {
+    color: #c5a059 !important;
+}
+header a span.bg-gradient-to-r {
+    background-image: linear-gradient(to right, #4a3525, #c5a059, #8b5a2b) !important;
+}
+
+footer {
+    background-color: #201712 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+footer span, 
+footer h4 {
+    color: #faf8f5 !important;
+}
+footer p, 
+footer li, 
+footer a {
+    color: #c8bbb1 !important;
+}
+footer a:hover {
+    color: #c5a059 !important;
+}
+
+article.glass-card {
+    background: #ffffff !important;
+    box-shadow: 0 8px 24px 0 rgba(61, 43, 31, 0.04) !important;
+}
+article.glass-card:hover {
+    border-color: rgba(197, 160, 89, 0.25) !important;
+    box-shadow: 0 12px 32px 0 rgba(197, 160, 89, 0.08) !important;
+}
+article.glass-card h3 {
+    color: #2b1d14 !important;
+}
+article.glass-card h3:hover {
+    color: #c5a059 !important;
+}
+article.glass-card span.bg-cyan-500\/10 {
+    background: rgba(197, 160, 89, 0.1) !important;
+    color: #b58d46 !important;
+    border-color: rgba(197, 160, 89, 0.2) !important;
+}
+
+.bg-white\/5.border-white\/10 {
+    background-color: rgba(197, 160, 89, 0.08) !important;
+    border-color: rgba(197, 160, 89, 0.2) !important;
+    color: #8a6a2f !important;
+}
+
+.glass-card.text-center div.text-slate-400 {
+    color: #7c6757 !important;
+}
+
+/* Global input/select/textarea styling for light theme */
+input, select, textarea {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(61, 43, 31, 0.15) !important;
+    color: #3d2b1f !important;
+}
+input::placeholder, textarea::placeholder {
+    color: #9c8a7c !important;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #c5a059 !important;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1) !important;
+}
+label {
+    color: #5c4738 !important;
+}
+
+/* Page content global text overrides */
+main .text-white,
+main h1.text-white,
+main h2.text-white,
+main h3.text-white,
+main h4.text-white,
+main span.text-white,
+main div.text-white {
+    color: #2b1d14;
+}
+
+main .text-slate-300,
+main .text-slate-400,
+main .text-slate-500,
+main .text-slate-200 {
+    color: #5c4738;
+}
+
+/* Explicitly restore styling for the hero slider to prevent global overrides from bleeding in */
+#hero-slider .text-white,
+#hero-slider h1.text-white,
+#hero-slider h2.text-white,
+#hero-slider h3.text-white,
+#hero-slider h4.text-white,
+#hero-slider span.text-white,
+#hero-slider div.text-white {
+    color: #ffffff !important;
+}
+
+#hero-slider .text-slate-300 {
+    color: #cbd5e1 !important;
+}
+
+#hero-slider .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+#hero-slider .text-slate-100 {
+    color: #f1f5f9 !important;
+}
+
+/* Retain text-transparent for gradients inside the hero slider */
+#hero-slider .text-transparent {
+    color: transparent !important;
+}
+
+/* Force all cyan/blue buttons outside slider to use gold gradient theme */
+main button[type="submit"]:not(#hero-slider *),
+main .bg-gradient-to-r.from-cyan-500:not(#hero-slider *),
+main .bg-gradient-to-r.from-purple-500:not(#hero-slider *) {
+    background-image: linear-gradient(to right, #d4af37, #b58d46) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px 0 rgba(197, 160, 89, 0.25) !important;
+}
+main button[type="submit"]:hover:not(#hero-slider *),
+main .bg-gradient-to-r.from-cyan-500:hover:not(#hero-slider *),
+main .bg-gradient-to-r.from-purple-500:hover:not(#hero-slider *) {
+    background-image: linear-gradient(to right, #b58d46, #8c6b2b) !important;
+}
+
+
